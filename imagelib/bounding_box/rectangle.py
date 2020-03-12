@@ -99,5 +99,22 @@ class RectBoundingBox(BoundingBox):
         height = self.height / image.height
         return np.array([x_center, y_center, width, height])
 
+    def is_point_inside(self, point: Point):
+        """
+        Test if a point inside this bound box.
+        :param point:
+        :return:
+        """
+        return self.point_min.x <= point.x <= self.point_max.x and \
+            self.point_min.y <= point.y <= self.point_max.y
+
+    def overlap_to(self, other: 'RectBoundingBox') -> bool:
+        """
+        Test if another bounding is overlap to self
+        :param other:
+        :return:
+        """
+        return self.is_point_inside(other.point_max) or self.is_point_inside(other.point_min)
+
     def __str__(self) -> str:
         return '{%s, %s}' % (self.point_min, self.point_max)

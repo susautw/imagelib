@@ -73,4 +73,3 @@ class Line:
 
     def __eq__(self, other: 'Line') -> bool:
         return self.point1 == other.point1 and self.point2 == other.point2
-
