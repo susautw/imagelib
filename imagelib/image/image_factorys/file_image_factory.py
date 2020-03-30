@@ -37,7 +37,7 @@ class FileImageFactory(ImageFactory):
         assert self.path.exists()
 
         if self.path.is_file():
-            return [self._get_single_image(self.path)]
+            yield self._get_single_image(self.path)
         else:
             for extension in self._image_extensions:
                 for file in self.path.glob(f'**/*.{extension}'):
