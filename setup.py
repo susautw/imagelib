@@ -15,7 +15,7 @@ print(*requires, sep=' ', end='\n')
 
 setup(
     name="imagelib",
-    version='0.2.0',
+    version='0.3.0',
     author='Rin,Su',
     license='MIT',
     packages=find_packages(), install_requires=requires

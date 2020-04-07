@@ -3,4 +3,3 @@ numpy>=1.16.1
 opencv-contrib-python<=3.4.2.16
 Pillow>=7.0.0
 scikit-image>=0.14.2
-
