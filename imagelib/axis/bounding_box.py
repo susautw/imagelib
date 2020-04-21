@@ -68,7 +68,7 @@ class BoundingBox:
 
     def crop_image(self, image: Image):
         data = image.clone().to_numpy()
-        data = data[self.point_min.y: self.point_max.y + 1, self.point_min.x: self.point_max.x + 1]
+        data = data[int(self.point_min.y): int(self.point_max.y) + 1, int(self.point_min.x): int(self.point_max.x) + 1]
         return Image(data, image.color_model)
 
     def is_in_distance_of(self, point: Point, distance: float) -> bool:
