@@ -3,8 +3,8 @@ from typing import TYPE_CHECKING
 
 import cv2
 import numpy as np
-from imagelib.image.image_writers import BlockingImageWriter
-from ..lib import Point
+from .image_writers import BlockingImageWriter
+from ..axis import Point
 
 if TYPE_CHECKING:
     from imagelib.image import NamedWindow

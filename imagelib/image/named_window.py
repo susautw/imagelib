@@ -1,6 +1,6 @@
 import cv2
 
-from ..lib import Point
+from ..axis import Point
 
 
 class NamedWindow:

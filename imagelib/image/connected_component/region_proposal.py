@@ -3,11 +3,10 @@ from typing import List, TYPE_CHECKING
 
 from skimage.measure import regionprops
 
-from ...bounding_box import RectBoundingBox
-from ...lib import Point
+from ...axis import BoundingBox, Point
 
 if TYPE_CHECKING:
-    from imagelib.image import Image
+    from .. import Image
 
 
 class RegionProposal:
@@ -18,7 +17,7 @@ class RegionProposal:
     @staticmethod
     def _prop_to_proposal(prop) -> 'Proposal':
         min_row, min_col, max_row, max_col = prop['bbox']
-        bounding_box = RectBoundingBox(
+        bounding_box = BoundingBox(
                 Point(min_col, min_row),
                 Point(max_col, max_row)
             )
@@ -29,4 +28,4 @@ class RegionProposal:
 class Proposal:
     area: int
     perimeter: float
-    bounding_box: RectBoundingBox
+    bounding_box: BoundingBox

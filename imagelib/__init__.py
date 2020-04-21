@@ -48,17 +48,18 @@ from .image.segmentation import (
     ChromaKeySegmenter
 )
 
-# initialize all sub-package under /bounding_box
+# initialize all sub-package under /axis
 
-from .bounding_box import (
+from .axis import (
     BoundingBox,
-    RectBoundingBox
+    RectBoundingBox,  # Deprecated
+    Line,
+    Point
 )
 
-# initialize all sub-package under /lib
-from .lib import (
-    Point,
-    Line,
+# initialize all sub-package under /draw
+from .draw import (
+    Drawable,
     Brush,
     BrushFactory
 )

@@ -5,7 +5,7 @@ import numpy as np
 
 from ...image import Image
 from ...image.fillers import Filler
-from ...lib import Point
+from ...axis import Point
 
 
 class FloodFiller(Filler):

@@ -1,19 +1,18 @@
-from dataclasses import dataclass
 from math import inf
 from pathlib import Path
-from typing import TYPE_CHECKING, List, Iterator
+from typing import TYPE_CHECKING, Iterator
 
 import cv2
 import numpy as np
 
 from ..image_iterator import NonStoreImageIterator, ThreadingImageIterator
-from ...image.color_models import BGRColor
-from ...image.image_factorys import ImageFactory
-from ...image import Image
-from ...image.image_iterator import ListImageIterator
+from ..color_models import BGRColor
+from ..image_factorys import ImageFactory
+from .. import Image
+
 
 if TYPE_CHECKING:
-    from ...image.image_iterator import ImageIterator
+    from ..image_iterator import ImageIterator
 
 
 class FileImageFactory(ImageFactory):

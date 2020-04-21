@@ -1,12 +1,14 @@
+import warnings
+
 import cv2
 import numpy as np
 
-from ..bounding_box import BoundingBox
 from ..image import Image
-from ..lib import Brush, Point, BrushFactory
+from ..axis import Point
+from ..draw import Brush, BrushFactory
 
 
-class RectBoundingBox(BoundingBox):
+class BoundingBox:
     def __init__(self, p1: Point, p2: Point):
         self._p1 = p1
         self._p2 = p2
@@ -75,7 +77,7 @@ class RectBoundingBox(BoundingBox):
         """
         return point.distance_to(self.center_point) <= distance
 
-    def merge_with(self, other: 'RectBoundingBox') -> 'RectBoundingBox':
+    def merge_with(self, other: 'BoundingBox') -> 'BoundingBox':
         """
         Merge two bounding boxes, and return a new instance of the merged bounding box.
         """
@@ -85,7 +87,7 @@ class RectBoundingBox(BoundingBox):
         x2 = max(self.point_max.x, other.point_max.x)
         y2 = max(self.point_max.y, other.point_max.y)
 
-        return RectBoundingBox(Point(x1, y1), Point(x2, y2))
+        return BoundingBox(Point(x1, y1), Point(x2, y2))
 
     def to_numpy_as_yolo_form(self, image: Image) -> np.ndarray:  # TODO extract this method as strategy pattern
         """
@@ -118,3 +120,10 @@ class RectBoundingBox(BoundingBox):
 
     def __str__(self) -> str:
         return '{%s, %s}' % (self.point_min, self.point_max)
+
+
+class RectBoundingBox(BoundingBox):
+    def __init__(self, p1: Point, p2: Point):
+        warnings.warn('RectBoundingBox should replace to BoundingBox', DeprecationWarning)
+        super().__init__(p1, p2)
+
