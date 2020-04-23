@@ -21,6 +21,13 @@ class PathCurve(Drawable):
             image = line.draw(image, brush)
         return image
 
+    @property
+    def length(self) -> float:
+        total_length = 0
+        for line in self.lines:
+            total_length += line.length()
+        return total_length
+
     def __getitem__(self, item) -> Point:
         return self._points[item]
 
