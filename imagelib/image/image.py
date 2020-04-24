@@ -4,7 +4,6 @@ from typing import TYPE_CHECKING
 import cv2
 import numpy as np
 from .image_writers import BlockingImageWriter
-from ..axis import Point
 
 if TYPE_CHECKING:
     from imagelib.image import NamedWindow
@@ -38,6 +37,7 @@ class Image:
 
     @property
     def center_point(self):
+        from ..axis import Point
         return Point(self.width // 2, self.height // 2)
 
     def to_numpy(self) -> np.ndarray:
